@@ -183,7 +183,6 @@ class SessionRecord {
   let run = data.version === undefined;
   for (let i = 0; i < migrations.length; ++i) {
    if (run) {
-    console.info("Migrating session to:", migrations[i].version);
     migrations[i].migrate(data);
    } else if (migrations[i].version === data.version) {
     run = true;
@@ -262,7 +261,6 @@ class SessionRecord {
   if (this.isClosed(session)) {
    return;
   }
-  console.info("Closing session:", session);
   session.indexInfo.closed = Date.now();
  }
 
